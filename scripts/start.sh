@@ -70,7 +70,7 @@ if [ "${ENGINE:-wine}" = "proton" ]; then
     export STEAM_COMPAT_APP_ID="2278520"
     export PROTON_USE_XALIA=0
     export WINEDEBUG="${WINEDEBUG:-fixme-all}"
-    export WINEDLLOVERRIDES="mscoree,mshtml=;dbghelp=n,b"
+    export WINEDLLOVERRIDES="mscoree,mshtml=;dbghelp=n,b;iphlpapi=n,b"
     export DISPLAY=:99
 
     rm -f /tmp/.X99-lock /tmp/.X11-unix/X99
@@ -88,7 +88,7 @@ else
     export WINEPREFIX="${WINEPREFIX:-$HOME/.wine}"
     export WINEARCH="${WINEARCH:-win64}"
     export WINEDEBUG="${WINEDEBUG:-fixme-all}"
-    export WINEDLLOVERRIDES="mscoree,mshtml=;dbghelp=n,b"
+    export WINEDLLOVERRIDES="mscoree,mshtml=;dbghelp=n,b;iphlpapi=n,b"
 
     xvfb-run --auto-servernum wine "$SERVER_EXEC" "${extra_args[@]}" >"$ENGINE_LOG" 2>&1 &
     server_pid="$!"
